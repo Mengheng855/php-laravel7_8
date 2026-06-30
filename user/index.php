@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -646,11 +650,20 @@
         <a href="#products">Product</a>
         <a href="#category">Category <i class="bi bi-chevron-down" aria-hidden="true"></i></a>
       </nav>
-
-      <div class="nav-actions">
-        <a class="login-link" href="../auth/login.php">Login</a>
-        <a class="register-btn" href="../auth/register.php">Register</a>
-      </div>
+      <?php 
+          if(!isset($_SESSION['is_admin'])){
+            echo '
+              <div class="nav-actions">
+                <a class="login-link" href="../auth/login.php">Login</a>
+                <a class="register-btn" href="../auth/register.php">Register</a>
+              </div>
+            ';
+          }else{
+            echo '
+              <a class="register-btn" href="../auth/logout.php">Logout</a>
+            ';
+          }
+       ?>
     </div>
   </header>
 

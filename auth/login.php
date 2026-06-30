@@ -289,7 +289,7 @@
         <h2>Login</h2>
         <p>Enter your account details to continue.</p>
 
-        <form action="#" method="post">
+        <form action="checkLogin.php" method="post">
           <div class="mb-3">
             <label class="form-label" for="email">Email address</label>
             <input class="form-control" type="email" id="email" name="email" placeholder="you@example.com" required>
@@ -308,7 +308,7 @@
             <a href="#">Forgot password?</a>
           </div>
 
-          <button class="auth-submit" type="submit">Login</button>
+          <button class="auth-submit" name="btnLogin" type="submit">Login</button>
         </form>
 
         <p class="auth-switch">Don't have an account? <a href="register.php">Register</a></p>

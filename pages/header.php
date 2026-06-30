@@ -1,3 +1,14 @@
+<?php
+  session_start();
+  if(!isset($_SESSION['is_admin'])){
+    header('location: ../auth/login.php');
+    exit;
+  }
+  if($_SESSION['is_admin']!=1){
+    header('location: ../index.php');
+    exit;
+  }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <?php

@@ -283,7 +283,7 @@
         <h2>Register</h2>
         <p>Fill in your information to create a new account.</p>
 
-        <form action="#" method="post">
+        <form action="createUser.php" method="post">
           <div class="mb-3">
             <label class="form-label" for="name">Name</label>
             <input class="form-control" type="text" id="name" name="name" placeholder="Your name" required>
@@ -304,7 +304,7 @@
             <span>I agree to the <a href="#">Terms</a> and <a href="#">Privacy Policy</a>.</span>
           </label>
 
-          <button class="auth-submit" type="submit">Create account</button>
+          <button class="auth-submit" name="btnSubmit" type="submit">Create account</button>
         </form>
 
         <p class="auth-switch">Already have an account? <a href="login.php">Login</a></p>
