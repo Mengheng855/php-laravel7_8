@@ -82,93 +82,45 @@ include __DIR__ . '/../pages/header.php';
               </div>
             </div>
             <div class="table-responsive">
-              <table class="table align-middle mb-0" id="categoriesTable" data-searchable-table>
+              <table class="table align-middle mb-0 text-center" id="categoriesTable" data-searchable-table>
                 <thead>
                   <tr>
+                    <th scope="col">ID</th>
                     <th scope="col">Category Name</th>
-                    <th scope="col">Slug</th>
-                    <th scope="col">Description</th>
-                    <th scope="col">Products Count</th>
-                    <th scope="col">Status</th>
-                    <th scope="col" class="text-end">Action</th>
+                    <th scope="col">Created By</th>
+                    <th scope="col">Created At</th>
+                    <th scope="col">Updated At</th>
+                    
+                    <th scope="col">Action</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td>
-                      <div class="d-flex align-items-center gap-2">
-                        <div class="avatar-img avatar-sm bg-light-subtle border d-flex align-items-center justify-content-center" style="width: 38px; height: 38px; border-radius: 6px;">
-                          <i class="bi bi-phone text-primary" style="font-size: 1.2rem;"></i>
-                        </div>
-                        <strong>Electronics</strong>
-                      </div>
-                    </td>
-                    <td><code class="text-dark">electronics</code></td>
-                    <td>Smart devices, computing, phones, and peripherals.</td>
-                    <td>428 items</td>
-                    <td><span class="badge text-bg-success">Active</span></td>
-                    <td class="text-end"><button class="btn btn-light btn-sm" type="button">Edit</button></td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="d-flex align-items-center gap-2">
-                        <div class="avatar-img avatar-sm bg-light-subtle border d-flex align-items-center justify-content-center" style="width: 38px; height: 38px; border-radius: 6px;">
-                          <i class="bi bi-activity text-success" style="font-size: 1.2rem;"></i>
-                        </div>
-                        <strong>Apparel</strong>
-                      </div>
-                    </td>
-                    <td><code class="text-dark">apparel</code></td>
-                    <td>Clothing, shoes, footwear, and accessory fashion.</td>
-                    <td>312 items</td>
-                    <td><span class="badge text-bg-success">Active</span></td>
-                    <td class="text-end"><button class="btn btn-light btn-sm" type="button">Edit</button></td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="d-flex align-items-center gap-2">
-                        <div class="avatar-img avatar-sm bg-light-subtle border d-flex align-items-center justify-content-center" style="width: 38px; height: 38px; border-radius: 6px;">
-                          <i class="bi bi-house text-warning" style="font-size: 1.2rem;"></i>
-                        </div>
-                        <strong>Home & Kitchen</strong>
-                      </div>
-                    </td>
-                    <td><code class="text-dark">home-kitchen</code></td>
-                    <td>Furnishings, utensils, chairs, tables, and home decor.</td>
-                    <td>184 items</td>
-                    <td><span class="badge text-bg-success">Active</span></td>
-                    <td class="text-end"><button class="btn btn-light btn-sm" type="button">Edit</button></td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="d-flex align-items-center gap-2">
-                        <div class="avatar-img avatar-sm bg-light-subtle border d-flex align-items-center justify-content-center" style="width: 38px; height: 38px; border-radius: 6px;">
-                          <i class="bi bi-heart text-danger" style="font-size: 1.2rem;"></i>
-                        </div>
-                        <strong>Cosmetics</strong>
-                      </div>
-                    </td>
-                    <td><code class="text-dark">cosmetics</code></td>
-                    <td>Beauty items, makeup, skincare, and fragrance collections.</td>
-                    <td>98 items</td>
-                    <td><span class="badge text-bg-success">Active</span></td>
-                    <td class="text-end"><button class="btn btn-light btn-sm" type="button">Edit</button></td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="d-flex align-items-center gap-2">
-                        <div class="avatar-img avatar-sm bg-light-subtle border d-flex align-items-center justify-content-center" style="width: 38px; height: 38px; border-radius: 6px;">
-                          <i class="bi bi-book text-info" style="font-size: 1.2rem;"></i>
-                        </div>
-                        <strong>Books</strong>
-                      </div>
-                    </td>
-                    <td><code class="text-dark">books</code></td>
-                    <td>Educational books, novels, guides, and magazines.</td>
-                    <td>0 items</td>
-                    <td><span class="badge text-bg-secondary">Inactive</span></td>
-                    <td class="text-end"><button class="btn btn-light btn-sm" type="button">Edit</button></td>
-                  </tr>
+                  <?php 
+                    require '../connection/conn.php';
+                    global $conn;
+                    $select="SELECT c.id,c.cate_name,c.created_at,c.updated_at,u.name
+                    FROM tbl_category as c
+                    INNER JOIN tbl_user as u
+                    ON c.user_id=u.id
+                    ";
+                    $ex=$conn->query($select);
+                    while($row=mysqli_fetch_assoc($ex)){
+                      echo '
+                        <tr>
+                          <td>'.$row['id'].'</td>
+                          <td><code class="text-dark">'.$row['cate_name'].'</code></td>
+                          <td>'.$row['name'].'</td>
+                          <td>'.$row['created_at'].'</td>
+                          <td>'.$row['updated_at'].'</td>
+                          <td>
+                            <button class="btn btn-outline-warning btn-sm" type="button">Edit</button>
+                            <button class="btn btn-outline-danger btn-sm" type="button">Delete</button>
+                          </td>
+                        </tr>
+                      ';
+                    }
+                   ?>
+                
                 </tbody>
               </table>
             </div>

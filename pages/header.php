@@ -167,7 +167,7 @@ $nav_items = isset($nav_items) ? $nav_items : (
                 <li>
                   <hr class="dropdown-divider">
                 </li>
-                <li><a class="dropdown-item" href="<?php echo $signout_link; ?>">Sign out</a></li>
+                <li><a class="dropdown-item" href="../auth/logout.php">Sign out</a></li>
               </ul>
             </div>
           </div>

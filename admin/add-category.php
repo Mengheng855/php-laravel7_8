@@ -22,7 +22,7 @@ include __DIR__ . '/../pages/header.php';
 
           <section class="row g-3">
             <div class="col-12">
-              <form class="panel needs-validation" novalidate>
+              <form action="insert_category.php" method="post" class="panel needs-validation" novalidate>
                 <div class="panel-header">
                   <div>
                     <h2 class="h5 mb-1 section-title"><i class="bi bi-folder-plus" aria-hidden="true"></i><span>Category Information</span></h2>
@@ -32,31 +32,13 @@ include __DIR__ . '/../pages/header.php';
                 <div class="row g-3">
                   <div class="col-md-6">
                     <label class="form-label" for="categoryName">Category Name</label>
-                    <input class="form-control" id="categoryName" type="text" required>
+                    <input class="form-control" name="categoryName" id="categoryName" type="text" required>
                     <div class="invalid-feedback">Category name is required.</div>
-                  </div>
-                  <div class="col-md-6">
-                    <label class="form-label" for="slug">Slug</label>
-                    <input class="form-control" id="slug" type="text" required>
-                    <div class="invalid-feedback">Slug is required.</div>
-                  </div>
-                  <div class="col-md-12">
-                    <label class="form-label" for="status">Status</label>
-                    <select class="form-select" id="status" required>
-                      <option value="">Choose status</option>
-                      <option>Active</option>
-                      <option>Inactive</option>
-                    </select>
-                    <div class="invalid-feedback">Please choose a status.</div>
-                  </div>
-                  <div class="col-12">
-                    <label class="form-label" for="description">Description</label>
-                    <textarea class="form-control" id="description" rows="4" placeholder="Brief explanation of what products fit into this category"></textarea>
                   </div>
                 </div>
                 <div class="d-flex flex-wrap justify-content-end gap-2 mt-4">
                   <a class="btn btn-outline-secondary" href="categories.php">Cancel</a>
-                  <button class="btn btn-primary" type="submit">
+                  <button class="btn btn-primary" type="submit" name="btnSubmit">
                     <i class="bi bi-check-circle" aria-hidden="true"></i> Create Category
                   </button>
                 </div>

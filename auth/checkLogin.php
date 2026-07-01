@@ -5,7 +5,7 @@
     if(isset($_POST['btnLogin'])){
         $email=htmlspecialchars($_POST['email']);
         $pass=htmlspecialchars($_POST['password']);
-        $select="SELECT is_admin,password FROM tbl_user WHERE email='$email'";
+        $select="SELECT id,is_admin,password FROM tbl_user WHERE email='$email'";
         $ex=$conn->query($select);
         $row=mysqli_fetch_assoc($ex);
         if(!password_verify($pass,$row['password'])){
@@ -14,6 +14,7 @@
             header('location: login.php');
             exit;
         }
+        $_SESSION['user_id']=$row['id'];
         $_SESSION['is_admin']=$row['is_admin'];
         if($row['is_admin']==0){
             header('location: ../index.php');

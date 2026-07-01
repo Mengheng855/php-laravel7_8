@@ -99,6 +99,7 @@ include __DIR__ . '/../pages/header.php';
               <table class="table align-middle mb-0" id="productsTable" data-searchable-table>
                 <thead>
                   <tr>
+                    <th scope="col">ID</th>
                     <th scope="col">Product</th>
                     <th scope="col">SKU</th>
                     <th scope="col">Category</th>
@@ -110,6 +111,7 @@ include __DIR__ . '/../pages/header.php';
                 </thead>
                 <tbody>
                   <tr>
+                    
                     <td>
                       <div class="d-flex align-items-center gap-2">
                         <div class="avatar-img avatar-sm bg-light-subtle border d-flex align-items-center justify-content-center" style="width: 38px; height: 38px; border-radius: 6px;">
