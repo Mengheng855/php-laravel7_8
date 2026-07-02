@@ -113,8 +113,8 @@ include __DIR__ . '/../pages/header.php';
                           <td>'.$row['created_at'].'</td>
                           <td>'.$row['updated_at'].'</td>
                           <td>
-                            <button class="btn btn-outline-warning btn-sm" type="button">Edit</button>
-                            <button class="btn btn-outline-danger btn-sm" type="button">Delete</button>
+                            <a href="edit-category.php?id='.$row['id'].'" class="btn btn-outline-warning btn-sm" type="button">Edit</a>
+                            <a href="deleteCategory.php?id='.$row['id'].'" onclick="return confirm(\'Are you sure?\')" class="btn btn-outline-danger btn-sm" type="button">Delete</a>
                           </td>
                         </tr>
                       ';
