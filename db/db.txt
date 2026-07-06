@@ -75,6 +75,8 @@ CREATE TABLE tbl_product (
     pro_name VARCHAR(150) NOT NULL,
     description TEXT,
     price DECIMAL(10,2) NOT NULL,
+    qty INT NOT NULL,
+    image text,
     cate_id INT NOT NULL,
     user_id INT NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
