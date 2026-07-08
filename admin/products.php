@@ -101,111 +101,54 @@ include __DIR__ . '/../pages/header.php';
                   <tr>
                     <th scope="col">ID</th>
                     <th scope="col">Product</th>
-                    <th scope="col">SKU</th>
+                    <th scope="col">Image</th>
                     <th scope="col">Category</th>
                     <th scope="col">Price</th>
                     <th scope="col">Stock</th>
-                    <th scope="col">Status</th>
+                    <th scope="col">Admin</th>
+                    <th scope="col">Created At</th>
+                    <th scope="col">Updated At</th>
+                    
                     <th scope="col" class="text-end">Action</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
+                  <?php 
+                    require '../connection/conn.php';
+                    global $conn;
+                    $select="SELECT p.id, p.pro_name, p.description, p.price, p.qty, p.image,
+                    p.created_at, p.updated_at, c.cate_name, u.name
+                    FROM tbl_product as p
+                    INNER JOIN tbl_category as c
+                    ON p.cate_id=c.id
+                    INNER JOIN tbl_user as u
+                    ON p.user_id=u.id
+                    ";
+                    $ex=$conn->query($select);
                     
-                    <td>
-                      <div class="d-flex align-items-center gap-2">
-                        <div class="avatar-img avatar-sm bg-light-subtle border d-flex align-items-center justify-content-center" style="width: 38px; height: 38px; border-radius: 6px;">
-                          <i class="bi bi-phone text-primary" style="font-size: 1.2rem;"></i>
-                        </div>
-                        <div>
-                          <p class="fw-semibold mb-0">iPhone 15 Pro</p>
-                          <p class="text-muted small mb-0">256GB Space Gray</p>
-                        </div>
-                      </div>
-                    </td>
-                    <td><code class="text-dark">PHN-IPH15P-256</code></td>
-                    <td>Electronics</td>
-                    <td>$999.00</td>
-                    <td>142 units</td>
-                    <td><span class="badge text-bg-success">In Stock</span></td>
-                    <td class="text-end"><button class="btn btn-light btn-sm" type="button">Edit</button></td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="d-flex align-items-center gap-2">
-                        <div class="avatar-img avatar-sm bg-light-subtle border d-flex align-items-center justify-content-center" style="width: 38px; height: 38px; border-radius: 6px;">
-                          <i class="bi bi-activity text-success" style="font-size: 1.2rem;"></i>
-                        </div>
-                        <div>
-                          <p class="fw-semibold mb-0">Nike Air Max</p>
-                          <p class="text-muted small mb-0">Black & White Running Shoes</p>
-                        </div>
-                      </div>
-                    </td>
-                    <td><code class="text-dark">SHO-NJKAM-009</code></td>
-                    <td>Apparel</td>
-                    <td>$129.99</td>
-                    <td>8 units</td>
-                    <td><span class="badge text-bg-warning">Low Stock</span></td>
-                    <td class="text-end"><button class="btn btn-light btn-sm" type="button">Edit</button></td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="d-flex align-items-center gap-2">
-                        <div class="avatar-img avatar-sm bg-light-subtle border d-flex align-items-center justify-content-center" style="width: 38px; height: 38px; border-radius: 6px;">
-                          <i class="bi bi-house text-warning" style="font-size: 1.2rem;"></i>
-                        </div>
-                        <div>
-                          <p class="fw-semibold mb-0">Ergonomic Office Chair</p>
-                          <p class="text-muted small mb-0">High-back mesh workspace chair</p>
-                        </div>
-                      </div>
-                    </td>
-                    <td><code class="text-dark">FUR-ERGOCH-002</code></td>
-                    <td>Home & Kitchen</td>
-                    <td>$249.50</td>
-                    <td>0 units</td>
-                    <td><span class="badge text-bg-danger">Out of Stock</span></td>
-                    <td class="text-end"><button class="btn btn-light btn-sm" type="button">Edit</button></td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="d-flex align-items-center gap-2">
-                        <div class="avatar-img avatar-sm bg-light-subtle border d-flex align-items-center justify-content-center" style="width: 38px; height: 38px; border-radius: 6px;">
-                          <i class="bi bi-heart text-danger" style="font-size: 1.2rem;"></i>
-                        </div>
-                        <div>
-                          <p class="fw-semibold mb-0">Matte Lipstick - Red</p>
-                          <p class="text-muted small mb-0">Velvet finish long-lasting</p>
-                        </div>
-                      </div>
-                    </td>
-                    <td><code class="text-dark">COS-MATLIP-005</code></td>
-                    <td>Cosmetics</td>
-                    <td>$18.00</td>
-                    <td>235 units</td>
-                    <td><span class="badge text-bg-success">In Stock</span></td>
-                    <td class="text-end"><button class="btn btn-light btn-sm" type="button">Edit</button></td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="d-flex align-items-center gap-2">
-                        <div class="avatar-img avatar-sm bg-light-subtle border d-flex align-items-center justify-content-center" style="width: 38px; height: 38px; border-radius: 6px;">
-                          <i class="bi bi-keyboard text-info" style="font-size: 1.2rem;"></i>
-                        </div>
-                        <div>
-                          <p class="fw-semibold mb-0">Wireless Keyboard</p>
-                          <p class="text-muted small mb-0">Multi-device Bluetooth keyboard</p>
-                        </div>
-                      </div>
-                    </td>
-                    <td><code class="text-dark">TEC-WIRKEY-012</code></td>
-                    <td>Electronics</td>
-                    <td>$45.00</td>
-                    <td>0 units</td>
-                    <td><span class="badge text-bg-danger">Out of Stock</span></td>
-                    <td class="text-end"><button class="btn btn-light btn-sm" type="button">Edit</button></td>
-                  </tr>
+                    while($row=mysqli_fetch_assoc($ex)){
+                      echo '
+                        <tr>
+                          <td>'.$row['id'].'</td>
+                          <td>'.$row['pro_name'].'</td>
+                          <td>
+                            <img src="'.$row['image'].'" width="30px" height="30px" alt="">
+                          </td>
+                          <td>'.$row['cate_name'].'</td>
+                          <td>'.$row['price'].'</td>
+                          <td>'.$row['qty'].'</td>
+                          <td>'.$row['name'].'</td>
+                          <td>'.$row['created_at'].'</td>
+                          <td>'.$row['updated_at'].'</td>
+                          <td>
+                            <a href="deleteProduct.php?id='.$row['id'].'" onclick="return confirm(\'Are you sure?\')" class="btn btn-outline-danger btn-sm" type="button">Delete</a>
+                            <a href="edit-product.php?id='.$row['id'].'" class="btn btn-outline-warning btn-sm" type="button">Edit</a>
+                          </td>
+      
+                        </tr>
+                      ';
+                    }
+                   ?>
                 </tbody>
               </table>
             </div>
